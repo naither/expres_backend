@@ -5,7 +5,8 @@ const routerApi = require('./routes');
 const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.handler');
 
 const app = express();
-const port = 3000;
+//const port = 3000;
+const port = process.env.PORT || 3000;
 
 const whitelist =['http://localhost:8080', 'http://127.0.0.1:5500', 'https://myapp.bo'];
 const options = {
@@ -23,11 +24,11 @@ app.use(cors(options));
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/api/", (req, res) => {
   res.send("mi servidor Express");
 });
 
-app.get('/otraRuta', (req, res) => {
+app.get('/api/otraRuta', (req, res) => {
   res.send("Mi otra tienda express");
 });
 
